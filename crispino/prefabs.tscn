@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://j88d38xwxntl"]
+
+[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://godot-main/Crispino/assets/player_idle-01.png" id="1_d0ecp"]
+[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://godot-main/Crispino/assets/player_idle-02.png" id="2_7dooa"]
+[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://godot-main/Crispino/assets/player_idle-03.png" id="3_7a53b"]
+[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://godot-main/Crispino/assets/player_move-01.png" id="4_nd485"]
+[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://godot-main/Crispino/assets/player_move-02.png" id="5_32pht"]
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://godot-main/Crispino/assets/player_down-01.png" id="6_i81j2"]
+[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://godot-main/Crispino/assets/player_down-02.png" id="7_nx2jo"]
+[ext_resource type="Texture2D" uid="uid://bv22jkmqp6855" path="res://godot-main/Crispino/assets/player_up-01.png" id="8_wjgj3"]
+[ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://godot-main/Crispino/assets/player_up-02.png" id="9_v2ywj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyjww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d0ecp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7dooa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7a53b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nd485")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_32pht")
+}],
+"loop": true,
+"name": &"movie",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i81j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nx2jo")
+}],
+"loop": true,
+"name": &"movie_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wjgj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v2ywj")
+}],
+"loop": true,
+"name": &"movie_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj4ke"]
+radius = 27.074
+
+[node name="player" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pyjww")
+animation = &"movie"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_nj4ke")
