@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://ds0hvpf6amvtd"]
+
+[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://assets/player_idle-01.png" id="1_2jvw8"]
+[ext_resource type="Script" path="res://scripts/Script/s.gd" id="1_unn3o"]
+[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://assets/player_idle-02.png" id="2_gbxj6"]
+[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://assets/player_idle-03.png" id="3_4pvwh"]
+[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://assets/player_move-01.png" id="4_5l0x2"]
+[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://assets/player_move-02.png" id="5_0mwue"]
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="6_08oyu"]
+[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://assets/player_down-02.png" id="7_yt8up"]
+[ext_resource type="Texture2D" uid="uid://bv22jkmqp6855" path="res://assets/player_up-01.png" id="8_2m7mk"]
+[ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://assets/player_up-02.png" id="9_vp0xp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m313h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2jvw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbxj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4pvwh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 47.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5l0x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0mwue")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_08oyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yt8up")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2m7mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vp0xp")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p16tx"]
+radius = 29.14
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_unn3o")
+
+[node name="Anime" type="AnimatedSprite2D" parent="."]
+position = Vector2(109, 62)
+scale = Vector2(0.5, 0.538)
+sprite_frames = SubResource("SpriteFrames_m313h")
+animation = &"move"
+autoplay = "idle"
+frame_progress = 0.0457836
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(109, 70)
+rotation = -2.45393
+skew = 0.164061
+shape = SubResource("CircleShape2D_p16tx")
